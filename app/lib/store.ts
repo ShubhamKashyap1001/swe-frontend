@@ -1,46 +1,45 @@
-import { create } from "zustand"
+import {create} from "zustand"
 
-export type ApiKeyType = {
-  id: string
-  name: string
-  key: string
-  active: boolean
-  createdAt: string
+export type ApiKey={
+ id:string
+ name:string
+ key:string
+ active:boolean
 }
 
-type Store = {
-  apiKeys: ApiKeyType[]
-  addKey: (name: string) => void
-  deleteKey: (id: string) => void
-  toggleKey: (id: string) => void
+type Store={
+ apiKeys:ApiKey[]
+ addKey:(name:string)=>void
+ deleteKey:(id:string)=>void
+ toggle:(id:string)=>void
 }
 
-export const useApiStore = create<Store>((set) => ({
-  apiKeys: [],
+export const useStore=create<Store>((set)=>({
 
-  addKey: (name) =>
-    set((state) => ({
-      apiKeys: [
-        ...state.apiKeys,
-        {
-          id: crypto.randomUUID(),
-          name,
-          key: "sk_" + Math.random().toString(36).substring(2, 18),
-          active: true,
-          createdAt: new Date().toISOString(),
-        },
-      ],
-    })),
+ apiKeys:[],
 
-  deleteKey: (id) =>
-    set((state) => ({
-      apiKeys: state.apiKeys.filter((k) => k.id !== id),
-    })),
+ addKey:(name)=>
+ set(state=>({
+  apiKeys:[
+   ...state.apiKeys,
+   {
+    id:crypto.randomUUID(),
+    name,
+    key:"sk_"+Math.random().toString(36).slice(2,18),
+    active:true
+   }
+  ]
+ })),
 
-  toggleKey: (id) =>
-    set((state) => ({
-      apiKeys: state.apiKeys.map((k) =>
-        k.id === id ? { ...k, active: !k.active } : k
-      ),
-    })),
+ deleteKey:(id)=>
+ set(state=>({
+  apiKeys:state.apiKeys.filter(k=>k.id!==id)
+ })),
+
+ toggle:(id)=>
+ set(state=>({
+  apiKeys:state.apiKeys.map(k=>
+   k.id===id?{...k,active:!k.active}:k
+  )
+ }))
 }))
