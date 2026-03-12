@@ -16,22 +16,7 @@ type Store = {
 }
 
 export const useApiStore = create<Store>((set) => ({
-  apiKeys: [
-    {
-      id: "1",
-      name: "Production Key",
-      key: "sk_live_xxxxxxxxx1234",
-      active: true,
-      createdAt: new Date().toISOString()
-    },
-    {
-      id: "2",
-      name: "Testing Key",
-      key: "sk_test_xxxxxxxxx5678",
-      active: false,
-      createdAt: new Date().toISOString()
-    }
-  ],
+  apiKeys: [],
 
   addKey: (name) =>
     set((state) => ({
@@ -42,20 +27,20 @@ export const useApiStore = create<Store>((set) => ({
           name,
           key: "sk_" + Math.random().toString(36).substring(2, 18),
           active: true,
-          createdAt: new Date().toISOString()
-        }
-      ]
+          createdAt: new Date().toISOString(),
+        },
+      ],
     })),
 
   deleteKey: (id) =>
     set((state) => ({
-      apiKeys: state.apiKeys.filter((k) => k.id !== id)
+      apiKeys: state.apiKeys.filter((k) => k.id !== id),
     })),
 
   toggleKey: (id) =>
     set((state) => ({
       apiKeys: state.apiKeys.map((k) =>
         k.id === id ? { ...k, active: !k.active } : k
-      )
-    }))
+      ),
+    })),
 }))
