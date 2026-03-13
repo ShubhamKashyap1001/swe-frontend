@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import GridBackground from "./components/ui/GridBackground";
+import TechStack from "./components/TechStack";
 import Link from "next/link";
 import {
   Key,
@@ -130,21 +131,57 @@ await sweAgent.run({
 
       {/* VIDEO */}
 
-      {showVideo && (
+{showVideo && (
 
-        <section className="max-w-[900px] mx-auto px-6 pb-20">
+  <div className="bg-[#050505] w-full flex justify-center pt-6 pb-10">
 
-          <div className="rounded-xl border border-[#1f2937] overflow-hidden shadow-lg">
+    <div className="relative w-full max-w-[900px] px-6">
 
-            <video className="w-full" controls>
-              <source src="/videos/setup.mp4" type="video/mp4" />
-            </video>
+      {/* CLOSE BUTTON */}
 
-          </div>
+      <button
+        onClick={() => setShowVideo(false)}
+        className="
+        absolute
+        -top-4
+        -right-2
+        w-8
+        h-8
+        rounded-full
+        border
+        border-[#1f2937]
+        bg-[#0c0c0c]
+        flex
+        items-center
+        justify-center
+        text-slate-400
+        hover:text-white
+        hover:border-green-500
+        transition
+        "
+      >
+        ✕
+      </button>
 
-        </section>
+      {/* VIDEO */}
 
-      )}
+      <div className="rounded-xl border border-[#1f2937] overflow-hidden shadow-xl">
+
+        <video
+          className="w-full"
+          controls
+        >
+          <source src="/videos/setup.mp4" type="video/mp4" />
+        </video>
+
+      </div>
+
+    </div>
+
+  </div>
+
+)}
+      <TechStack />
 
       {/* FEATURES */}
 
@@ -207,9 +244,10 @@ await sweAgent.run({
       <section className="py-24 border-t border-[#1f2937]">
 
         <div className="max-w-6xl mx-auto px-6 text-center">
+            <div className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-slate-900 text-xs font-bold uppercase tracking-widest mb-4">The Pipeline</div>
 
-          <h2 className="text-4xl font-bold mb-6">
-            From Repository to Automated Engineering
+          <h2 className="text-4xl font-serif font-bold mb-6">
+            From PR to Merged.
           </h2>
 
           <p className="text-slate-400 mb-16 max-w-2xl mx-auto">
@@ -220,7 +258,7 @@ await sweAgent.run({
 
           </p>
 
-          <div className="grid md:grid-cols-4 gap-8">
+          {/* <div className="grid md:grid-cols-4 gap-8">
 
             <PipelineCard
               step="01"
@@ -246,7 +284,156 @@ await sweAgent.run({
               desc="Generate issues and suggestions."
             />
 
-          </div>
+          </div> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 relative z-10">
+
+  {/* CARD 1 */}
+
+  <div className="group relative">
+    <div className="h-full bg-[#0c0c0c] border border-[#1f2937] rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-500 hover:border-green-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(34,197,94,0.25)] relative overflow-hidden">
+
+      <div className="absolute inset-0 bg-gradient-to-b from-[#111] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+      <div className="w-12 h-12 rounded-2xl bg-[#111] border border-[#1f2937] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#151515] transition-all duration-300 shadow-sm relative z-10">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          strokeWidth="2" strokeLinecap="round"
+          strokeLinejoin="round" className="w-6 h-6 text-yellow-400">
+
+          <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+
+        </svg>
+
+      </div>
+
+      <h3 className="text-xl font-bold text-white mb-3 relative z-10">
+        Static Analysis
+      </h3>
+
+      <p className="text-sm text-slate-400 leading-relaxed relative z-10">
+        AST-based detectors instantly flag syntax errors, security risks, and anti-patterns.
+      </p>
+
+      <div className="absolute -bottom-6 -right-6 text-8xl font-black text-[#1f2937] select-none pointer-events-none">
+        01
+      </div>
+
+    </div>
+  </div>
+
+
+  {/* CARD 2 */}
+
+  <div className="group relative">
+    <div className="h-full bg-[#0c0c0c] border border-[#1f2937] rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-500 hover:border-green-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(34,197,94,0.25)] relative overflow-hidden">
+
+      <div className="absolute inset-0 bg-gradient-to-b from-[#111] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+      <div className="w-12 h-12 rounded-2xl bg-[#111] border border-[#1f2937] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#151515] transition-all duration-300 shadow-sm">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          strokeWidth="2" strokeLinecap="round"
+          strokeLinejoin="round" className="w-6 h-6 text-blue-400">
+
+          <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+
+        </svg>
+
+      </div>
+
+      <h3 className="text-xl font-bold text-white mb-3">
+        Complexity Scoring
+      </h3>
+
+      <p className="text-sm text-slate-400 leading-relaxed">
+        The diff is analyzed for size and risk to determine the optimal review depth.
+      </p>
+
+      <div className="absolute -bottom-6 -right-6 text-8xl font-black text-[#1f2937]">
+        02
+      </div>
+
+    </div>
+  </div>
+
+
+  {/* CARD 3 */}
+
+  <div className="group relative">
+    <div className="h-full bg-[#0c0c0c] border border-[#1f2937] rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-500 hover:border-green-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(34,197,94,0.25)] relative overflow-hidden">
+
+      <div className="absolute inset-0 bg-gradient-to-b from-[#111] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+      <div className="w-12 h-12 rounded-2xl bg-[#111] border border-[#1f2937] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#151515] transition-all duration-300 shadow-sm">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          strokeWidth="2" strokeLinecap="round"
+          strokeLinejoin="round" className="w-6 h-6 text-purple-400">
+
+          <circle cx="12" cy="12" r="10" />
+          <path d="M2 12h20" />
+
+        </svg>
+
+      </div>
+
+      <h3 className="text-xl font-bold text-white mb-3">
+        Context Assembly
+      </h3>
+
+      <p className="text-sm text-slate-400 leading-relaxed">
+        RAG engine fetches relevant files, types, and docs to give the AI full context.
+      </p>
+
+      <div className="absolute -bottom-6 -right-6 text-8xl font-black text-[#1f2937]">
+        03
+      </div>
+
+    </div>
+  </div>
+
+
+  {/* CARD 4 */}
+
+  <div className="group relative">
+    <div className="h-full bg-[#0c0c0c] border border-[#1f2937] rounded-3xl p-8 flex flex-col items-center text-center transition-all duration-500 hover:border-green-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(34,197,94,0.25)] relative overflow-hidden">
+
+      <div className="absolute inset-0 bg-gradient-to-b from-[#111] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+      <div className="w-12 h-12 rounded-2xl bg-[#111] border border-[#1f2937] flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#151515] transition-all duration-300 shadow-sm">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          strokeWidth="2" strokeLinecap="round"
+          strokeLinejoin="round" className="w-6 h-6 text-green-400">
+
+          <circle cx="12" cy="12" r="10" />
+          <path d="m9 12 2 2 4-4" />
+
+        </svg>
+
+      </div>
+
+      <h3 className="text-xl font-bold text-white mb-3">
+        AI Validation
+      </h3>
+
+      <p className="text-sm text-slate-400 leading-relaxed">
+        Gemini/OpenAI validates findings and provides actionable feedback.
+      </p>
+
+      <div className="absolute -bottom-6 -right-6 text-8xl font-black text-[#1f2937]">
+        04
+      </div>
+
+    </div>
+  </div>
+
+</div>
 
         </div>
 

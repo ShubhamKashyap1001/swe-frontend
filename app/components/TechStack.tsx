@@ -1,16 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 
 export default function TechStack() {
-  const [active, setActive] = useState("openai");
-
   const tech = [
     {
-      id: "gemini",
+      id: "gemini-color",
       name: "Gemini",
-      icon: "/icons/gemini.png"
+      icon: "/icons/gemini-color.svg"
     },
     {
       id: "openai",
@@ -21,126 +18,145 @@ export default function TechStack() {
       id: "github",
       name: "GitHub",
       icon: "/icons/github.png"
-    },
-    {
-      id: "sarvam",
-      name: "Sarvam AI",
-      icon: "/icons/sarvam.png"
     }
   ];
 
   return (
-    <section className="py-24 border-t border-[#1f2937]">
+    <section className="relative py-2 bg-[#050505] overflow-hidden">
 
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      {/* GRID BACKGROUND */}
 
-        {/* USER TRUST */}
+      <div
+        className="
+        absolute inset-0
+        bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),
+        linear-gradient(to_bottom,#1f2937_1px,transparent_1px)]
+        bg-[size:40px_40px]
+        opacity-20
+        "
+      />
 
-        <div className="flex items-center justify-center gap-4 mb-10">
+      <div className="relative max-w-6xl mx-auto px-6 flex flex-col ">
+
+        {/* USERS */}
+
+        <div className="flex items-center gap-4 mb-16">
 
           <div className="flex -space-x-2">
 
             <Image
-              src="/users/u1.jpg"
+              src="/users/u1.svg"
               width={36}
               height={36}
               alt="user"
-              className="rounded-full border border-black"
+              className="rounded-full border border-[#1f2937]"
+            />
+
+            {/* <Image
+              src="/users/u2.avif"
+              width={36}
+              height={36}
+              alt="user"
+              className="rounded-full border border-[#1f2937]"
+            /> */}
+
+            <Image
+              src="/users/u3.svg"
+              width={36}
+              height={36}
+              alt="user"
+              className="rounded-full border border-[#1f2937]"
             />
 
             <Image
-              src="/users/u2.jpg"
+              src="/users/u4.svg"
               width={36}
               height={36}
               alt="user"
-              className="rounded-full border border-black"
-            />
-
-            <Image
-              src="/users/u3.jpg"
-              width={36}
-              height={36}
-              alt="user"
-              className="rounded-full border border-black"
-            />
-
-            <Image
-              src="/users/u4.jpg"
-              width={36}
-              height={36}
-              alt="user"
-              className="rounded-full border border-black"
+              className="rounded-full border border-[#1f2937]"
             />
 
           </div>
 
-          <div className="text-left text-sm text-slate-400">
+          <div className="text-sm text-slate-400">
+
             <span className="text-white font-semibold">
-              1000+ Developers
+              100+ Developers
             </span>
+
             <br />
+
             use SWE Agent
+
           </div>
 
         </div>
 
         {/* TITLE */}
 
-        <p className="text-xs tracking-widest text-slate-500 mb-4">
+        <p className="text-xs text-center tracking-[0.25em] text-slate-500 mb-4">
           POWERING THE FUTURE
         </p>
 
-        <p className="text-slate-400 mb-12">
+        <p className="text-slate-400 mb-16 text-center">
           SWE Agent integrates with leading AI platforms
         </p>
 
-        {/* ICONS */}
+        {/* TECH ICONS */}
 
-        <div className="flex justify-center gap-12">
+        <div className="flex justify-center gap-20">
 
           {tech.map((item) => (
 
-            <button
+            <div
               key={item.id}
-              onClick={() => setActive(item.id)}
-              className="flex flex-col items-center gap-3 group"
+              className="flex flex-col items-center gap-3 group cursor-pointer"
             >
 
+              {/* ICON BOX */}
+
               <div
-                className={`
-                w-16 h-16 rounded-xl flex items-center justify-center
-                border transition
-                ${
-                  active === item.id
-                    ? "border-green-500 bg-green-500/10"
-                    : "border-[#1f2937]"
-                }
-                `}
+                className="
+                w-20 h-20
+                flex items-center justify-center
+                rounded-xl
+                border border-[#1f2937]
+                transition
+                duration-300
+                group-hover:scale-110
+                group-hover:border-green-500
+                group-hover:shadow-[0_0_25px_rgba(34,197,94,0.35)]
+                "
               >
 
                 <Image
                   src={item.icon}
-                  width={32}
-                  height={32}
+                  width={36}
+                  height={36}
                   alt={item.name}
+                  className={
+                    item.id === "gemini-color"
+      ? "opacity-100 group-hover:scale-110 transition"
+      : "invert opacity-90 group-hover:opacity-100"
+                  }
                 />
 
               </div>
 
+              {/* NAME */}
+
               <span
-                className={`
+                className="
                 text-sm tracking-wide
-                ${
-                  active === item.id
-                    ? "text-green-400"
-                    : "text-slate-400"
-                }
-                `}
+                text-slate-400
+                transition
+                group-hover:text-green-400
+                "
               >
                 {item.name}
               </span>
 
-            </button>
+            </div>
 
           ))}
 
