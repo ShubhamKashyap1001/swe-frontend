@@ -3,6 +3,7 @@
 import { useState } from "react";
 import GridBackground from "./components/ui/GridBackground";
 import TechStack from "./components/TechStack";
+import { CometCard } from "./components/ui/comet-card"
 import Link from "next/link";
 import {
   Key,
@@ -33,11 +34,6 @@ export default function Home() {
             <button className="px-4 py-2 border border-green-500 rounded-lg hover:bg-green-500/20 transition">
               Download
             </button>
-
-            <button className="px-4 py-2 bg-green-600 text-black rounded-lg hover:bg-green-500 transition">
-              GitHub Login
-            </button>
-
           </div>
 
         </div>
@@ -93,7 +89,7 @@ export default function Home() {
 
           {/* CODE WINDOW */}
 
-          <div className="bg-[#0c0c0c] border border-[#1f2937] rounded-xl overflow-hidden shadow-xl">
+          {/* <div className="bg-[#0c0c0c] border border-[#1f2937] rounded-xl overflow-hidden shadow-xl">
 
             <div className="flex items-center gap-2 px-4 py-2 border-b border-[#1f2937]">
 
@@ -123,7 +119,78 @@ await sweAgent.run({
 
             </pre>
 
-          </div>
+          </div> */}
+          <CometCard>
+
+  <div
+    className="
+    bg-[#0c0c0c]
+    border
+    border-[#1f2937]
+    rounded-xl
+    overflow-hidden
+    shadow-xl
+    transition
+    hover:border-green-500
+    "
+  >
+
+    {/* TERMINAL HEADER */}
+
+    <div
+      className="
+      flex
+      items-center
+      gap-2
+      px-4
+      py-2
+      border-b
+      border-[#1f2937]
+      bg-[#090909]
+      "
+    >
+
+      <div className="w-3 h-3 bg-red-500 rounded-full" />
+      <div className="w-3 h-3 bg-yellow-400 rounded-full" />
+      <div className="w-3 h-3 bg-green-500 rounded-full" />
+
+      <span className="ml-auto text-xs text-slate-400 font-mono">
+        swe_agent_demo.ts
+      </span>
+
+    </div>
+
+    {/* TERMINAL CODE */}
+
+    <pre
+      className="
+      p-6
+      text-sm
+      text-green-400
+      font-mono
+      overflow-x-auto
+      leading-relaxed
+      "
+    >
+
+{`import { sweAgent } from "@swe-agent/core"
+
+await sweAgent.run({
+ repo: "github.com/user/project",
+ task: "Analyze codebase"
+})
+
+✓ scanning repository
+✓ detecting bugs
+✓ generating GitHub issues
+✓ optimizing workflow
+`}
+
+    </pre>
+
+  </div>
+
+</CometCard>
 
         </section>
 
