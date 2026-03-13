@@ -3,8 +3,12 @@
 import { useState } from "react";
 import GridBackground from "./components/ui/GridBackground";
 import TechStack from "./components/TechStack";
-import { CometCard } from "./components/ui/comet-card"
+import { CometCard } from "./components/ui/comet-card";
 import Link from "next/link";
+import { Space_Grotesk } from "next/font/google";
+
+const space = Space_Grotesk({ subsets: ["latin"] });
+
 import {
   Key,
   Brain,
@@ -34,6 +38,7 @@ export default function Home() {
             <button className="px-4 py-2 border border-green-500 rounded-lg hover:bg-green-500/20 transition">
               Download
             </button>
+
           </div>
 
         </div>
@@ -51,7 +56,7 @@ export default function Home() {
               OPEN SOURCE
             </span>
 
-            <h1 className="text-5xl md:text-7xl font-bold mt-6 leading-tight">
+            <h1 className={`${space.className} text-5xl md:text-7xl font-bold mt-6 leading-tight`}>
 
               Software Engineering
               <br />
@@ -87,91 +92,56 @@ export default function Home() {
 
           </div>
 
-          {/* CODE WINDOW */}
+          {/* TERMINAL */}
 
-          {/* <div className="bg-[#0c0c0c] border border-[#1f2937] rounded-xl overflow-hidden shadow-xl">
-
-            <div className="flex items-center gap-2 px-4 py-2 border-b border-[#1f2937]">
-
-              <div className="w-3 h-3 bg-red-500 rounded-full" />
-              <div className="w-3 h-3 bg-yellow-400 rounded-full" />
-              <div className="w-3 h-3 bg-green-500 rounded-full" />
-
-              <span className="ml-auto text-xs text-slate-400">
-                swe_agent_demo.ts
-              </span>
-
-            </div>
-
-            <pre className="p-6 text-sm text-green-400 font-mono overflow-x-auto">
-
-{`import { sweAgent } from "@swe-agent/core"
-
-await sweAgent.run({
- repo: "github.com/user/project",
- task: "Analyze codebase"
-})
-
-✓ scanning repository
-✓ detecting bugs
-✓ generating GitHub issues
-✓ optimizing workflow`}
-
-            </pre>
-
-          </div> */}
           <CometCard>
 
-  <div
-    className="
-    bg-[#0c0c0c]
-    border
-    border-[#1f2937]
-    rounded-xl
-    overflow-hidden
-    shadow-xl
-    transition
-    hover:border-green-500
-    "
-  >
+            <div
+              className="
+              bg-[#0c0c0c]
+              border
+              border-[#1f2937]
+              rounded-xl
+              overflow-hidden
+              shadow-xl
+              transition
+              hover:border-green-500
+              "
+            >
 
-    {/* TERMINAL HEADER */}
+              <div
+                className="
+                flex
+                items-center
+                gap-2
+                px-4
+                py-2
+                border-b
+                border-[#1f2937]
+                bg-[#090909]
+                "
+              >
 
-    <div
-      className="
-      flex
-      items-center
-      gap-2
-      px-4
-      py-2
-      border-b
-      border-[#1f2937]
-      bg-[#090909]
-      "
-    >
+                <div className="w-3 h-3 bg-red-500 rounded-full" />
+                <div className="w-3 h-3 bg-yellow-400 rounded-full" />
+                <div className="w-3 h-3 bg-green-500 rounded-full" />
 
-      <div className="w-3 h-3 bg-red-500 rounded-full" />
-      <div className="w-3 h-3 bg-yellow-400 rounded-full" />
-      <div className="w-3 h-3 bg-green-500 rounded-full" />
+                <span className="ml-auto text-xs text-slate-400 font-mono">
+                  swe_agent_demo.ts
+                </span>
 
-      <span className="ml-auto text-xs text-slate-400 font-mono">
-        swe_agent_demo.ts
-      </span>
+              </div>
 
-    </div>
-
-    {/* TERMINAL CODE */}
-
-    <pre
-      className="
-      p-6
-      text-sm
-      text-green-400
-      font-mono
-      overflow-x-auto
-      leading-relaxed
-      "
-    >
+              <pre
+                className="
+                p-6
+                text-sm
+                text-green-400
+                font-mono
+                overflow-x-auto
+                leading-relaxed
+                "
+              >
 
 {`import { sweAgent } from "@swe-agent/core"
 
@@ -186,11 +156,11 @@ await sweAgent.run({
 ✓ optimizing workflow
 `}
 
-    </pre>
+              </pre>
 
-  </div>
+            </div>
 
-</CometCard>
+          </CometCard>
 
         </section>
 
@@ -198,56 +168,53 @@ await sweAgent.run({
 
       {/* VIDEO */}
 
-{showVideo && (
+      {showVideo && (
 
-  <div className="bg-[#050505] w-full flex justify-center pt-6 pb-10">
+        <div className="bg-[#050505] w-full flex justify-center pt-6 pb-10">
 
-    <div className="relative w-full max-w-[900px] px-6">
+          <div className="relative w-full max-w-[900px] px-6">
 
-      {/* CLOSE BUTTON */}
+            <button
+              onClick={() => setShowVideo(false)}
+              className="
+              absolute
+              -top-4
+              -right-2
+              w-8
+              h-8
+              rounded-full
+              border
+              border-[#1f2937]
+              bg-[#0c0c0c]
+              flex
+              items-center
+              justify-center
+              text-slate-400
+              hover:text-white
+              hover:border-green-500
+              transition
+              "
+            >
+              ✕
+            </button>
 
-      <button
-        onClick={() => setShowVideo(false)}
-        className="
-        absolute
-        -top-4
-        -right-2
-        w-8
-        h-8
-        rounded-full
-        border
-        border-[#1f2937]
-        bg-[#0c0c0c]
-        flex
-        items-center
-        justify-center
-        text-slate-400
-        hover:text-white
-        hover:border-green-500
-        transition
-        "
-      >
-        ✕
-      </button>
+            <div className="rounded-xl border border-[#1f2937] overflow-hidden shadow-xl">
 
-      {/* VIDEO */}
+              <video
+                className="w-full"
+                controls
+              >
+                <source src="/videos/setup.mp4" type="video/mp4" />
+              </video>
 
-      <div className="rounded-xl border border-[#1f2937] overflow-hidden shadow-xl">
+            </div>
 
-        <video
-          className="w-full"
-          controls
-        >
-          <source src="/videos/setup.mp4" type="video/mp4" />
-        </video>
+          </div>
 
-      </div>
+        </div>
 
-    </div>
+      )}
 
-  </div>
-
-)}
       <TechStack />
 
       {/* FEATURES */}
@@ -256,45 +223,53 @@ await sweAgent.run({
 
         <div className="max-w-6xl mx-auto px-6">
 
-          <h2 className="text-4xl font-bold text-center mb-16">
-
-            Everything you need to build faster
-
+          <h2 className="text-5xl md:text-5xl text-center pb-8 font-black tracking-tight leading-[1.05] text-white">
+            Everything you need to{" "}
+            <br className="hidden md:block" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
+              ship faster.
+            </span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
 
             <FeatureCard
+              index="01"
               icon={<Key />}
               title="API Key Management"
               desc="Securely manage OpenAI, Gemini and other provider API keys."
             />
 
             <FeatureCard
+              index="02"
               icon={<Brain />}
               title="AI Code Analysis"
               desc="Analyze repositories and detect bugs automatically."
             />
 
             <FeatureCard
+              index="03"
               icon={<Zap />}
               title="Workflow Automation"
               desc="Automate engineering workflows with AI agents."
             />
 
             <FeatureCard
+              index="04"
               icon={<Database />}
               title="Context Assembly"
               desc="Gather relevant files and docs for accurate AI reasoning."
             />
 
             <FeatureCard
+              index="05"
               icon={<Shield />}
               title="Secure Processing"
               desc="Your code is never used for training AI models."
             />
 
             <FeatureCard
+              index="06"
               icon={<MessageSquare />}
               title="Interactive Feedback"
               desc="Developers can interact with AI directly in issues."
@@ -535,7 +510,7 @@ await sweAgent.run({
   );
 }
 
-function FeatureCard({ icon, title, desc }: any) {
+function FeatureCard({ icon, title, desc, index }: any) {
   return (
     <div
       className="
@@ -548,6 +523,7 @@ function FeatureCard({ icon, title, desc }: any) {
       hover:-translate-y-1
       hover:border-green-500
       hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]
+      overflow-hidden
     "
     >
 
@@ -563,35 +539,9 @@ function FeatureCard({ icon, title, desc }: any) {
         {desc}
       </p>
 
-    </div>
-  );
-}
-
-function PipelineCard({ step, title, desc }: any) {
-  return (
-    <div
-      className="
-      bg-[#0c0c0c]
-      border border-[#1f2937]
-      rounded-xl
-      p-6
-      transition
-      hover:border-green-500
-      hover:shadow-[0_0_20px_rgba(34,197,94,0.2)]
-    "
-    >
-
-      <span className="text-green-400 text-sm">
-        {step}
-      </span>
-
-      <h3 className="font-semibold mt-2 mb-2">
-        {title}
-      </h3>
-
-      <p className="text-slate-400 text-sm">
-        {desc}
-      </p>
+      <div className="absolute -bottom-6 -right-6 text-8xl font-black text-[#1f2937] select-none pointer-events-none">
+        {index}
+      </div>
 
     </div>
   );
