@@ -1,72 +1,141 @@
-"use client"
+// "use client"
 
-import { useEffect, useState } from "react"
-import ApiKeyCard from "../../components/api/ApiKeyCard"
-import AddApiKey from "../../components/api/AddApiKey"
+// import { useEffect, useState } from "react"
+// import ApiKeyCard from "../../components/api/ApiKeyCard"
+// import AddApiKey from "../../components/api/AddApiKey"
+
+// export default function ApiKeys() {
+
+// const [keys,setKeys] = useState([])
+// const [loading,setLoading] = useState(true)
+
+// const loadKeys = async () => {
+
+// const res = await fetch(
+// "http://localhost:5000/api/apis?guestId=guest1"
+// )
+
+// const data = await res.json()
+
+// setKeys(data)
+// setLoading(false)
+
+// }
+
+// useEffect(()=>{
+// loadKeys()
+// },[])
+
+// if(loading){
+// return <p className="text-gray-400">Loading your API keys...</p>
+// }
+
+// if(keys.length === 0){
+// return(
+
+// <div className="text-gray-400 text-center mt-20">
+
+// <h2 className="text-xl mb-2">
+// No API Keys Found
+// </h2>
+
+// <p>
+// Create your first API key to start using SWE Agent services.
+// </p>
+
+// </div>
+
+// )
+// }
+
+// return(
+
+// <div>
+
+// <h2 className="text-2xl mb-6">
+// API Keys
+// </h2>
+
+// <AddApiKey reload={loadKeys}/>
+
+// <div className="grid grid-cols-3 gap-6">
+
+// {keys.map((key:any)=>(
+// <ApiKeyCard key={key.id} data={key} reload={loadKeys}/>
+// ))}
+
+// </div>
+
+// </div>
+
+// )
+// }
+
+
+"use client";
+
+import { useEffect, useState } from "react";
+import ApiKeyCard from "../../components/api/ApiKeyCard";
+import AddApiKey from "../../components/api/AddApiKey";
 
 export default function ApiKeys() {
+  const [keys, setKeys] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const [keys,setKeys] = useState([])
-const [loading,setLoading] = useState(true)
+  const guestId = "guest1";
 
-const loadKeys = async () => {
+  const loadKeys = async () => {
+    const res = await fetch(
+      `http://localhost:5000/api/apis?guestId=${guestId}`
+    );
 
-const res = await fetch(
-"http://localhost:5000/api/apis?guestId=guest1"
-)
+    const data = await res.json();
 
-const data = await res.json()
+    setKeys(data);
+    setLoading(false);
+  };
 
-setKeys(data)
-setLoading(false)
+  useEffect(() => {
+    loadKeys();
+  }, []);
 
-}
+  if (loading) {
+    return <p className="text-gray-400">Loading API keys...</p>;
+  }
 
-useEffect(()=>{
-loadKeys()
-},[])
+  return (
+    <div>
 
-if(loading){
-return <p className="text-gray-400">Loading your API keys...</p>
-}
+      {/* HEADER */}
 
-if(keys.length === 0){
-return(
+      <div className="flex justify-between items-center mb-8">
+        <h2 className="text-2xl font-semibold">
+          API Keys
+        </h2>
 
-<div className="text-gray-400 text-center mt-20">
+        <AddApiKey reload={loadKeys} />
+      </div>
 
-<h2 className="text-xl mb-2">
-No API Keys Found
-</h2>
+      {/* API KEY CARDS */}
 
-<p>
-Create your first API key to start using SWE Agent services.
-</p>
+      <div className="grid grid-cols-3 gap-6">
 
-</div>
+        {keys.length === 0 ? (
+          <p className="text-gray-400">
+            No API keys created yet.
+          </p>
+        ) : (
+          keys.map((key) => (
+            <ApiKeyCard
+              key={key.id}
+              data={key}
+              reload={loadKeys}
+            />
+          ))
+        )}
 
-)
-}
+      </div>
 
-return(
-
-<div>
-
-<h2 className="text-2xl mb-6">
-API Keys
-</h2>
-
-<AddApiKey reload={loadKeys}/>
-
-<div className="grid grid-cols-3 gap-6">
-
-{keys.map((key:any)=>(
-<ApiKeyCard key={key.id} data={key} reload={loadKeys}/>
-))}
-
-</div>
-
-</div>
-
-)
+    </div>
+  );
 }
