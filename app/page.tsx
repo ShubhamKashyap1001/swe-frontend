@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import GridBackground from "./components/ui/GridBackground";
-import TechStack from "./components/TechStack";
-import { CometCard } from "./components/ui/comet-card";
+import GridBackground from "../components/ui/GridBackground";
+import TechStack from "../components/TechStack";
+import { CometCard } from "../components/ui/comet-card";
 import Link from "next/link";
 import { Space_Grotesk } from "next/font/google";
 
