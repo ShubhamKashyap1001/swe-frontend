@@ -35,9 +35,9 @@ export default function Home() {
 
           <div className="flex gap-4">
 
-            <button className="px-4 py-2 border border-green-500 rounded-lg hover:bg-green-500/20 transition">
+            <a href="https://github.com/apps/swe-agent-v1"><button className="px-4 py-2 border border-green-500 rounded-lg hover:bg-green-500/20 transition">
               Download
-            </button>
+            </button></a>
 
           </div>
 
@@ -74,19 +74,19 @@ export default function Home() {
 
             <div className="flex gap-4 mt-8">
 
-              <Link
+              {/* <Link
                 href="/dashboard"
                 className="px-6 py-3 bg-green-500 text-black rounded-lg font-semibold hover:bg-green-400 transition"
               >
                 Open Dashboard
-              </Link>
+              </Link> */}
 
-              <button
+              {/* <button
                 onClick={() => setShowVideo(true)}
                 className="border-b border-green-500 text-green-400 opacity-80 hover:opacity-100 transition"
               >
                 Watch Setup Demo
-              </button>
+              </button> */}
 
             </div>
 
